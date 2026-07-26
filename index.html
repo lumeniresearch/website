@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumeni: Your Research Assistant AGI Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=10">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#home">
+      <span class="logo-mark">L</span>
+      <span class="logo-word">Lumeni</span>
+    </a>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#product">Product</a>
+      <a href="#models">Models</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#demo" class="btn btn-ghost">Book a Demo</a>
+      <a href="#demo" class="btn btn-primary">Get Started</a>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME / HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        <span class="hero-line hero-line-main" id="typed-line" data-typed-text="Hi, Lumeni" data-typed-accent="Lumeni">Hi, <span class="name-accent">Lumeni</span></span>
+        <span class="hero-line hero-line-sub">Your research assistant <span class="name-accent">agent</span> exploring ideas <em>with</em> <span class="name-accent">you</span>.</span>
+      </h1>
+      <p class="hero-sub">
+        Lumeni is with you at every step of the way. Browse, review and research knowing you have
+        a reliable partner.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary btn-lg">Book a Demo <span class="arrow">&rarr;</span></a>
+        <a href="#product" class="btn btn-ghost btn-lg">Explore Lumeni</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT / MIDDLE SECTION -->
+  <section id="product" class="product-section">
+
+    <div class="problem-block">
+      <h2 class="section-title" data-reveal>Researchers lose time and tokens.</h2>
+    </div>
+
+    <div class="connectors-strip" data-reveal>
+      <p class="connectors-caption">Lumeni uses tools you already know.</p>
+      <div class="connectors-row">
+        <div class="connector-item connector-item-arxiv">
+          <svg class="connector-logo connector-logo-arxiv" viewBox="0 0 220 80" role="img" aria-label="arXiv">
+            <text x="0" y="58" font-family="Georgia, 'Times New Roman', serif" font-size="54" fill="#7A6E64">ar</text>
+            <text x="118" y="58" font-family="Georgia, 'Times New Roman', serif" font-size="54" fill="#7A6E64">iv</text>
+            <g>
+              <line x1="66" y1="18" x2="118" y2="66" stroke="#7A6E64" stroke-width="9" stroke-linecap="round"/>
+              <line x1="118" y1="18" x2="66" y2="66" stroke="#7A6E64" stroke-width="9" stroke-linecap="round"/>
+              <line x1="70" y1="22" x2="114" y2="62" stroke="#B31B1B" stroke-width="9" stroke-linecap="round"/>
+              <line x1="114" y1="22" x2="70" y2="62" stroke="#B31B1B" stroke-width="9" stroke-linecap="round"/>
+              <circle cx="130" cy="24" r="4" fill="#7A6E64"/>
+            </g>
+          </svg>
+        </div>
+        <div class="connector-item">
+          <svg class="connector-icon" viewBox="0 0 24 24" role="img" aria-label="Google Scholar">
+            <defs>
+              <clipPath id="scholar-circle-clip">
+                <circle cx="12" cy="15.2" r="6.8"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#scholar-circle-clip)">
+              <rect x="4" y="8" width="16" height="7.2" fill="#729FF5"/>
+              <rect x="4" y="15.2" width="16" height="7.2" fill="#A6C6FA"/>
+            </g>
+            <path d="M12 2 1.5 8.2 12 14.4l8.2-4.86V15h1.8V8.2z" fill="#4577E0"/>
+            <path d="M12 2 3.3 7.16 12 14.4l8.7-6.24z" fill="#5C8CEA"/>
+          </svg>
+          <span>Google Scholar</span>
+        </div>
+      </div>
+
+      <div class="coming-soon-block">
+        <span class="coming-soon-label">Coming Soon</span>
+        <div class="connectors-row connectors-row-soon">
+          <div class="connector-item connector-item-soon">
+            <svg class="connector-logo connector-logo-pubmed" viewBox="0 0 190 60" role="img" aria-label="PubMed">
+              <text x="0" y="42" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" fill="#20419A">pub</text>
+              <text x="86" y="42" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" fill="#20419A">med</text>
+            </svg>
+            <span class="soon-badge">Soon</span>
+          </div>
+          <div class="connector-item connector-item-soon">
+            <svg class="connector-logo connector-logo-jstor" viewBox="0 0 150 60" role="img" aria-label="JSTOR">
+              <text x="0" y="42" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="42" fill="#93272C" letter-spacing="1">JSTOR</text>
+            </svg>
+            <span class="soon-badge">Soon</span>
+          </div>
+          <div class="connector-item connector-item-soon">
+            <svg class="connector-logo connector-logo-sciencedirect" viewBox="0 0 340 60" role="img" aria-label="ScienceDirect">
+              <text x="0" y="40" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="34" fill="#6E6E85">Science</text>
+              <text x="150" y="40" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="34" fill="#FF6D00">Direct</text>
+            </svg>
+            <span class="soon-badge">Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explainer-block">
+      <p class="explainer-lead" data-reveal>
+        Lumeni has <span class="highlight">memory</span> it can filter through and be more efficient
+        when it comes to discussing ideas. The agent is <span class="highlight">self-learning</span>
+        and acts like another researcher you can discuss ideas with.
+      </p>
+
+      <p class="explainer-body" data-reveal>
+        Lumeni eliminates all the preliminary brute work that comes with doing research, like finding
+        the newest and most relevant papers for you. You can then explore your ideas in-depth with Lumeni.
+      </p>
+
+      <h3 class="savings-title" data-reveal>With Lumeni:</h3>
+
+      <div class="savings-section">
+        <div class="savings-card savings-card-hours" data-reveal>
+          <div class="savings-card-label">Hours saved every week</div>
+
+          <div class="hours-bar-wrap">
+            <div class="hours-bar-value"><span class="hours-number" data-count-to="20">0</span><span class="hours-unit">hrs</span></div>
+            <div class="hours-bar-track">
+              <div class="hours-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="savings-card-result">≈87 hours saved every month</div>
+        </div>
+
+        <div class="savings-card savings-card-tokens" data-reveal>
+          <div class="savings-card-label">Tokens used per research idea</div>
+
+          <div class="tokens-count-wrap">
+            <div class="tokens-count" data-count-from="100000" data-count-to="2000" data-count-suffix="+">100,000+</div>
+          </div>
+
+          <div class="savings-card-result">50x fewer tokens than general agents</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-block">
+      <p class="eyebrow" data-reveal>WHY LUMENI</p>
+      <h3 class="section-title-sm" data-reveal>Keep your research sharp, current, and grounded.</h3>
+      <p class="features-sub" data-reveal>
+        Avoid re-reading what you've already read, surface the paper you didn't know existed,
+        and pick up exactly where your last session left off.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card" data-reveal data-reveal-group="features" data-reveal-index="0">
+          <p class="eyebrow">MEMORY BY DESIGN</p>
+          <h4>Lumeni remembers the shape of your research.</h4>
+          <p>Every conversation, source, and idea you've explored stays filterable and searchable,
+             so Lumeni never makes you repeat context you've already given it.</p>
+        </div>
+        <div class="feature-card" data-reveal data-reveal-group="features" data-reveal-index="1">
+          <p class="eyebrow">SELF-LEARNING</p>
+          <h4>Lumeni gets sharper the more you use it.</h4>
+          <p>It learns how you think, which sources you trust, and where your research is heading &mdash;
+             refining its own reasoning as your project evolves.</p>
+        </div>
+        <div class="feature-card" data-reveal data-reveal-group="features" data-reveal-index="2">
+          <p class="eyebrow">ASK ONCE, NOT SIX TABS</p>
+          <h4>Enterprise search that understands research.</h4>
+          <p>Ask across papers, notes, and prior conversations at once. One cited answer,
+             instead of a dozen searches across a dozen tools.</p>
+        </div>
+      </div>
+
+      <div class="harness-highlight" data-reveal>
+        <p class="eyebrow">LUMEHARNESS</p>
+        <h4>The engine behind Lumeni</h4>
+
+        <div class="harness-sources">
+          <span class="harness-source-chip">Markdown notes</span>
+          <span class="harness-source-chip">Chat history</span>
+          <span class="harness-source-chip">Papers liked &amp; passed on</span>
+        </div>
+
+        <p class="harness-description">
+          LumeHarness is the infrastructure that filters through everything Lumeni remembers about
+          you as a researcher &mdash; your markdown notes, your full chat history, and the papers
+          you've liked or passed on &mdash; and decides what's actually worth pulling into context.
+          Instead of re-feeding Lumeni everything you've ever discussed, LumeHarness surfaces only
+          what's relevant to the idea in front of you right now.
+        </p>
+        <p class="harness-punchline">That's how it can save so many tokens.</p>
+      </div>
+    </div>
+
+    <div class="how-it-works-block">
+      <p class="eyebrow" data-reveal>HOW LUMENI WORKS</p>
+      <h3 class="section-title-sm" data-reveal>From first glance to deep discussion.</h3>
+
+      <div class="how-it-works-grid">
+        <div class="how-it-works-card" data-reveal data-reveal-group="how" data-reveal-index="0">
+          <h4>Browse</h4>
+          <p>The morning desk &mdash; date rail, triage list, one line per paper.</p>
+        </div>
+        <div class="how-it-works-card" data-reveal data-reveal-group="how" data-reveal-index="1">
+          <h4>Review</h4>
+          <p>The reading room &mdash; one paper on stage, keyboard-first actions.</p>
+        </div>
+        <div class="how-it-works-card" data-reveal data-reveal-group="how" data-reveal-index="2">
+          <h4>Research</h4>
+          <p>Explore and discuss with Lumeni in-depth about your innovative ideas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELS / BOTTOM SECTION -->
+  <section id="models" class="models-section">
+    <p class="eyebrow eyebrow-light" data-reveal>UNDER THE HOOD</p>
+    <h2 class="section-title section-title-light" data-reveal>Built on models that think like a researcher.</h2>
+    <p class="models-sub" data-reveal>
+      Lumeni pairs frontier reasoning models with a governed memory layer, so every answer is both
+      fluent and grounded in evidence you can trace back to a source.
+    </p>
+
+    <div class="models-grid">
+      <div class="model-card" data-reveal data-reveal-group="models" data-reveal-index="0">
+        <h4>Deep Reasoning</h4>
+        <p>Multi-step reasoning over long, technical documents &mdash; not just keyword matching.</p>
+      </div>
+      <div class="model-card" data-reveal data-reveal-group="models" data-reveal-index="1">
+        <h4>Persistent Memory</h4>
+        <p>A filterable memory of every paper, note, and prior conversation, retrieved only when relevant.</p>
+      </div>
+      <div class="model-card" data-reveal data-reveal-group="models" data-reveal-index="2">
+        <h4>Continuous Learning</h4>
+        <p>Lumeni refines its own understanding of your field as your research evolves.</p>
+      </div>
+      <div class="model-card" data-reveal data-reveal-group="models" data-reveal-index="3">
+        <h4>Cited Retrieval</h4>
+        <p>Every claim traces back to the paper, note, or conversation it came from.</p>
+      </div>
+    </div>
+
+    <div class="cta-block" id="demo" data-reveal>
+      <h3>Curious what Lumeni could do for your research?</h3>
+      <p>A short conversation about how a connected research memory could accelerate your work.</p>
+      <a href="mailto:hello@lumeni.ai" class="btn btn-primary btn-lg">Book a Demo <span class="arrow">&rarr;</span></a>
+      <p class="cta-email">Prefer email? <a href="mailto:hello@lumeni.ai">hello@lumeni.ai</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 Lumeni. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#product">Product</a>
+      <a href="#models">Models</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js?v=10"></script>
+</body>
+</html>
