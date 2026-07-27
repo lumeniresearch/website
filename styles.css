@@ -10,8 +10,8 @@
   --border: #E4E4F0;
   --bg: #FFFFFF;
   --radius: 16px;
-  --savings-before: #B8B9EE;
-  --savings-after: #5E60CE;
+  --compare-before: #9A93A3;
+  --section-divider: #DDDAFB;
 }
 
 * { box-sizing: border-box; }
@@ -22,16 +22,24 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
   color: var(--ink);
+  /* Kept light through Agent Skills / LumeHarness / Why Lumeni with extra
+     buffer (up to 85%) since that section's actual height shifts with
+     viewport width (e.g. feature cards stacking to 1 column makes it much
+     taller). The ramp itself is also lighter than before to match. */
   background: linear-gradient(180deg,
     #FFFFFF 0%,
-    #F1F1FC 20%,
-    #DCDBF6 55%,
-    #8A8BDD 78%,
-    var(--primary) 90%,
+    #F1F1FC 15%,
+    #ECEBFA 40%,
+    #ECEBFA 85%,
+    #B0B1EA 91%,
+    var(--primary) 96%,
     var(--ink) 100%);
   line-height: 1.5;
+  /* Bakes in the 80% scale you preferred (the "zoomed out" look),
+     so it's the site's real, default size instead of a per-browser zoom setting. */
+  zoom: 80%;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -69,23 +77,16 @@ h1, h2, h3, h4, p { margin: 0; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.25rem;
   font-weight: 800;
   font-size: 1.5rem;
   margin-right: auto;
 }
 
 .logo-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
-  background: var(--primary);
-  color: white;
-  font-weight: 800;
-  font-size: 1.4rem;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -167,21 +168,36 @@ h1, h2, h3, h4, p { margin: 0; }
 .arrow { transition: transform 0.15s ease; }
 .btn:hover .arrow { transform: translateX(3px); }
 
-/* HERO — fills the full viewport below the sticky nav */
+/* HERO — fills the full viewport below the sticky nav.
+   The 125vh (instead of 100vh) compensates for body's zoom: 80% — vh always
+   resolves against the true, unzoomed viewport, but this box then gets
+   visually shrunk by that same zoom, so the target has to be scaled up by
+   1/0.8 first so the on-screen result still ends up filling the screen. */
 .hero {
-  min-height: calc(100vh - 75px);
+  min-height: calc(125vh - 75px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: 3rem 1.5rem 4.5rem;
   text-align: left;
-  background: #FFFFFF;
+  background:
+    radial-gradient(55% 45% at 50% 0%, rgba(94, 96, 206, 0.07) 0%, rgba(94, 96, 206, 0) 70%),
+    #FFFFFF;
 }
 
+/* The heading sits a little higher and the buttons sit lower, using the
+   full height of the hero instead of everything clustering in the middle. */
 .hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 980px;
   margin: 0 auto;
   width: 100%;
+}
+
+.hero-top {
+  margin-top: 1rem;
 }
 
 .hero-title {
@@ -197,7 +213,6 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 .hero-line-main {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -232,8 +247,8 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 .hero-line-sub {
-  margin-top: 0.75rem;
-  font-size: 35px;
+  margin-top: 4.2rem;
+  font-size: 42px;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -248,18 +263,35 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 .hero-sub {
-  margin: 2rem 0 0;
-  max-width: 680px;
-  font-size: clamp(1.35rem, 2vw, 1.75rem);
-  color: var(--muted);
+  margin: 4.1rem 0 0;
+  max-width: none;
+  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+  color: #33333D;
 }
 
 .hero-actions {
   margin-top: 2.25rem;
+  margin-bottom: 5.25rem;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+/* Fallback for mailto: links when the visitor has no default mail app
+   registered — clicking the button silently does nothing in that case,
+   so the address itself needs to stay visible and copyable. */
+.hero-email-fallback {
+  flex-basis: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.hero-email-fallback a {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 /* Lines fade in one-by-one only after the typing animation finishes —
@@ -297,9 +329,9 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 .connectors-strip {
-  margin-top: 0;
-  padding: 0 1.5rem 3rem;
-  border-bottom: 1px solid var(--border);
+  margin-top: 4rem;
+  padding: 3rem 1.5rem 0;
+  border-top: 1px solid var(--section-divider);
 }
 
 .connectors-caption {
@@ -324,21 +356,76 @@ h1, h2, h3, h4, p { margin: 0; }
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  padding: 0.9rem 1.5rem;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--ink-soft);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
-.connector-icon {
-  width: 44px;
-  height: 44px;
-  color: var(--primary);
+a.connector-item:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.connector-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+/* Rolling banner of peer-reviewed conferences, between the live connectors
+   and the "Coming Soon" row */
+.conferences-marquee {
+  margin-top: 2.5rem;
+  padding: 1.25rem 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.conferences-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: conferences-scroll 26s linear infinite;
+}
+
+.conference-item {
+  font-size: 1.1rem;
+  padding: 0.6rem 1.1rem;
+  gap: 0.6rem;
+}
+
+.conference-item .connector-logo-img {
+  width: 28px;
+  height: 28px;
+}
+
+.aaai-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   flex-shrink: 0;
 }
 
-.connector-logo-arxiv {
-  height: 46px;
-  width: auto;
+@keyframes conferences-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .coming-soon-block {
@@ -385,9 +472,6 @@ h1, h2, h3, h4, p { margin: 0; }
   border-radius: 999px;
 }
 
-.connector-logo-pubmed { height: 30px; width: auto; }
-.connector-logo-jstor { height: 32px; width: auto; }
-.connector-logo-sciencedirect { height: 26px; width: auto; }
 
 /* PRODUCT / MIDDLE SECTION */
 .product-section {
@@ -411,7 +495,7 @@ h1, h2, h3, h4, p { margin: 0; }
   max-width: 920px;
   margin: 0 auto;
   text-align: center;
-  padding: 3rem 0;
+  padding: 0.9rem 0 3rem;
 }
 
 .explainer-lead {
@@ -424,7 +508,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .explainer-body {
   margin-top: 1.5rem;
   font-size: 1.4rem;
-  color: var(--muted);
+  color: var(--ink);
   line-height: 1.6;
 }
 
@@ -439,38 +523,74 @@ h1, h2, h3, h4, p { margin: 0; }
   text-align: center;
   font-size: clamp(1.7rem, 3.2vw, 2.2rem);
   font-weight: 800;
-  color: var(--ink);
+  color: var(--primary);
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 .savings-section {
   margin: 2.75rem auto 0;
   max-width: 1080px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  /* minmax(0, 1fr), not plain 1fr — a bare 1fr track still respects each
+     item's intrinsic min-content width, so the widest number in a card
+     (e.g. "100,000" vs "$5") was quietly growing that whole column and
+     making the boxes different widths as the count animation ran. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.savings-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .savings-card {
-  padding: 3rem 2.5rem;
+  padding: 2.5rem;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: white;
   text-align: center;
+  /* Fixed height regardless of animation state or content length — the
+     vertical bars grow inside a fixed-height track (see below), and the
+     card now holds only the compare chart, so nothing in here should ever
+     change the card's own dimensions. */
+  min-height: 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .savings-card-label {
   font-weight: 700;
   font-size: 1.4rem;
   color: var(--ink);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  /* Reserve room for two lines and bottom-align the text in it — if one
+     label wraps to a second line and its neighbors don't, that used to
+     push its whole column (and the box below it) out of alignment with
+     the other two. */
+  min-height: 3.2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .hours-bar-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
+  /* height, not min-height — flexbox's baseline alignment (used in the
+     tokens wrap below) can compute a cross-axis size taller than a
+     min-height floor when two different font sizes share a baseline, so
+     only a hard height guarantees all three wraps end up pixel-identical. */
+  height: 5.25rem;
+  margin-bottom: 1.75rem;
 }
 
 .hours-bar-value {
@@ -486,34 +606,19 @@ h1, h2, h3, h4, p { margin: 0; }
   font-size: 1.5rem;
   font-weight: 700;
   margin-left: 0.35rem;
-  color: var(--ink-soft);
-}
-
-.hours-bar-track {
-  width: 100%;
-  height: 22px;
-  border-radius: 11px;
-  background: var(--primary-tint);
-  overflow: hidden;
-}
-
-.hours-bar-fill {
-  height: 100%;
-  width: 0%;
-  border-radius: 11px;
-  background: var(--primary);
-  transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hours-bar-fill.is-filled {
-  width: 100%;
+  color: var(--primary);
 }
 
 .tokens-count-wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 5.25rem;
+  /* flex-end, not baseline — with an explicit height, baseline alignment
+     of two different font sizes can push the taller item's top edge past
+     the box and clip it. Neither number here has a descender, so
+     bottom-aligning reads the same as baseline would without that risk. */
+  align-items: flex-end;
+  height: 5.25rem;
+  margin-bottom: 1.75rem;
 }
 
 .tokens-count {
@@ -524,16 +629,105 @@ h1, h2, h3, h4, p { margin: 0; }
   font-variant-numeric: tabular-nums;
 }
 
+.money-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 5.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.money-bar-value {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
 .savings-card-result {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
+  text-align: center;
   font-weight: 800;
   font-size: 1.6rem;
   color: var(--primary);
 }
 
-.features-block {
-  margin-top: 5rem;
+/* PER-CARD COMPARE BARS — vertical column-chart style: Without Lumeni (dull
+   grayish-purple, deliberately unappealing) vs With Lumeni (vivid purple).
+   Each bar grows inside a FIXED-height track, so the card's own height never
+   changes as the animation plays. Bars fill via the same
+   [data-reveal].is-visible toggle the rest of the page uses — fade AND grow
+   together, no extra JS needed. */
+.card-compare-vertical {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-bottom: 1.75rem;
+}
+
+.card-compare-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-compare-value-v {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-compare-track-v {
+  width: 60px;
+  height: 200px;
+  border-radius: 10px;
+  background: var(--primary-tint);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.card-compare-fill-v {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 5px 0 0;
+  /* Scale, not height: animating `height` inside an overflow:hidden,
+     border-radius track forces a layout+repaint every frame, which showed
+     up as faint horizontal banding on the shorter (5%) bars. Transform is
+     compositor-only, so it animates cleanly with no banding. The scale
+     factor is computed and driven from script.js (see runCompareBars). */
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.card-compare-fill-v.before { background: var(--compare-before); }
+.card-compare-fill-v.after { background: var(--primary); }
+
+.card-compare-name-v {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
   text-align: center;
+}
+
+.features-block {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--section-divider);
+  text-align: center;
+}
+
+.why-lumeni-eyebrow {
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  letter-spacing: -0.01em;
 }
 
 .section-title-sm {
@@ -548,7 +742,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .features-sub {
   margin-top: 1rem;
   font-size: 1.4rem;
-  color: var(--muted);
+  color: var(--ink);
   max-width: 780px;
   margin-left: auto;
   margin-right: auto;
@@ -589,48 +783,9 @@ h1, h2, h3, h4, p { margin: 0; }
   text-align: center;
 }
 
-.section-title-light { color: white; }
-
-.models-sub {
-  max-width: 780px;
-  margin: 1rem auto 0;
-  color: #C7C6E6;
-  font-size: 1.4rem;
-}
-
-.models-grid {
-  max-width: 1150px;
-  margin: 3rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
-.model-card {
-  padding: 2rem 1.5rem;
-  border-radius: var(--radius);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  text-align: left;
-}
-
-.model-card h4 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-}
-
-.model-card p {
-  color: #C7C6E6;
-  font-size: 1.4rem;
-  line-height: 1.5;
-}
-
 .cta-block {
-  margin: 5rem auto 0;
+  margin: 0 auto;
   max-width: 760px;
-  padding-top: 3.5rem;
-  border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 .cta-block h3 {
@@ -658,21 +813,17 @@ h1, h2, h3, h4, p { margin: 0; }
   font-weight: 700;
 }
 
-/* LUMEHARNESS — folded into the "Why Lumeni" section, light theme */
-.harness-highlight {
-  margin-top: 3rem;
-  padding: 2.75rem 2.5rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--primary-tint-2);
-  background: var(--primary-tint);
+/* LUMEHARNESS — its own section, right after Agent Skills & Tools */
+.harness-block {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--section-divider);
   text-align: center;
 }
 
-.harness-highlight h4 {
-  margin-top: 0.4rem;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--ink);
+.harness-eyebrow {
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  letter-spacing: -0.01em;
 }
 
 .harness-sources {
@@ -687,18 +838,28 @@ h1, h2, h3, h4, p { margin: 0; }
   font-size: 1rem;
   font-weight: 700;
   color: var(--primary);
-  background: white;
+  background: var(--primary-tint);
   border: 1px solid var(--primary-tint-2);
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
 }
 
+.harness-card {
+  margin: 2rem auto 0;
+  max-width: 900px;
+  padding: 2.5rem 2.75rem;
+  border-radius: var(--radius);
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 32px rgba(23, 23, 43, 0.08);
+}
+
 .harness-description {
-  margin: 1.75rem auto 0;
   max-width: 860px;
+  margin: 0 auto;
   font-size: 1.4rem;
   line-height: 1.7;
-  color: var(--muted);
+  color: var(--ink);
 }
 
 .harness-punchline {
@@ -710,36 +871,503 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* HOW LUMENI WORKS */
 .how-it-works-block {
-  margin-top: 5rem;
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--section-divider);
   text-align: center;
 }
 
-.how-it-works-grid {
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+.how-it-works-eyebrow {
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  letter-spacing: -0.01em;
 }
 
-.how-it-works-card {
-  padding: 2.25rem 1.75rem;
+/* SMART DISCOVERY and AI ASSISTANT eyebrows sit a step down from the
+   section header (HOW LUMENI WORKS, ~2.2rem/4xl on the standard type
+   scale) — five sizes down that scale (4xl, 3xl, 2xl, xl, lg, base) lands
+   on 1rem/"base", still bigger than a normal 0.75rem eyebrow. */
+.eyebrow-md {
+  font-size: 1rem;
+}
+
+.paper-demo-tryit {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* AI ASSISTANT */
+.ai-assistant-block {
+  margin-top: 6.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  text-align: left;
+}
+
+.ai-assistant-copy .section-title-sm { margin-top: 0; }
+
+.ai-chat-mock { margin-top: 3rem; }
+
+.ai-assistant-desc {
+  margin-top: 1.25rem;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+.ai-model-pills {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ai-model-pill {
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--primary-tint);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ai-chat-mock {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: 0 20px 45px -25px rgba(23, 23, 43, 0.25);
+}
+
+.ai-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ai-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-chat-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-chat-name {
+  font-weight: 800;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.ai-chat-model {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.ai-chat-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+.ai-chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ai-chat-bubble {
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.ai-chat-bubble-user {
+  align-self: flex-end;
+  max-width: 88%;
+  background: var(--primary-tint);
+  color: var(--ink);
+}
+
+.ai-chat-bubble-ai {
+  background: var(--ink);
+  color: white;
+}
+
+.ai-chat-bubble-ai p { margin-bottom: 0.6rem; }
+.ai-chat-bubble-ai strong { color: white; }
+
+.ai-chat-bubble-ai ol {
+  margin: 0 0 0.85rem;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ai-chat-tag {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--primary-tint);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .ai-assistant-block { grid-template-columns: 1fr; text-align: center; }
+  .ai-assistant-copy { text-align: center; }
+  .ai-model-pills { justify-content: center; }
+  .ai-chat-bubble-user { align-self: center; }
+}
+
+/* SMART DISCOVERY — paper triage demo (click or drag-swipe) */
+.paper-demo-block {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--section-divider);
+  text-align: center;
+}
+
+.paper-demo-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  /* A fast mouse-drag swipe on the card otherwise triggers the browser's
+     native click-and-drag text selection on nearby copy (like "Smart
+     Discovery"), which visually reads as that text jumping around. */
+  user-select: none;
+}
+
+.paper-demo-copy {
+  flex: 0 1 340px;
+  text-align: left;
+}
+
+.paper-demo-title {
+  margin-top: 0.5rem;
+  max-width: none;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.paper-demo {
+  position: relative;
+  flex: 0 1 620px;
+  padding: 0 4.5rem;
+}
+
+.paper-card {
+  position: relative;
+  background: white;
   border-radius: var(--radius);
   border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(23, 23, 43, 0.14);
+  overflow: hidden;
+  text-align: left;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.paper-card.is-dragging {
+  transition: none;
+  cursor: grabbing;
+}
+
+.paper-card-topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--primary-tint);
+}
+
+.paper-card-page {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-card-title {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paper-card-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.paper-actions-menu {
+  position: relative;
+}
+
+.paper-actions-toggle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
   background: white;
+  border: 1px solid var(--primary-tint-2);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.paper-actions-dropdown {
+  display: none;
+  position: absolute;
+  top: 115%;
+  left: 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(23, 23, 43, 0.15);
+  min-width: 180px;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.paper-actions-dropdown.open {
+  display: block;
+}
+
+.paper-actions-dropdown button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.paper-actions-dropdown button:hover {
+  background: var(--primary-tint);
+}
+
+.paper-read-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.paper-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1.5rem 1.75rem 2.25rem;
+}
+
+.paper-card-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.fake-line {
+  display: block;
+  height: 9px;
+  border-radius: 4px;
+  background: var(--border);
+}
+
+.fake-line-gap {
+  display: block;
+  height: 0.5rem;
+}
+
+.w-70 { width: 70%; }
+.w-80 { width: 80%; }
+.w-85 { width: 85%; }
+.w-88 { width: 88%; }
+.w-90 { width: 90%; }
+.w-92 { width: 92%; }
+.w-95 { width: 95%; }
+.w-96 { width: 96%; }
+.w-98 { width: 98%; }
+.w-100 { width: 100%; }
+
+.paper-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(23, 23, 43, 0.84);
+  color: white;
+  cursor: pointer;
+}
+
+.paper-card-overlay.is-dismissed {
+  display: none;
+}
+
+.paper-overlay-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.paper-overlay-sub {
+  font-size: 1rem;
+  color: #D5D4F0;
+  max-width: 420px;
+}
+
+.paper-action {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: white;
+  background: var(--ink);
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+  transition: transform 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.paper-action-arrow {
+  font-size: 1.1rem;
+}
+
+.paper-action-maybe {
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+}
+
+.paper-action-maybe:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.paper-action-dislike {
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.paper-action-dislike:hover {
+  transform: translateY(-50%) translateY(-2px);
+}
+
+.paper-action-like {
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+}
+
+.paper-action-like:hover {
+  transform: translateY(-50%) translateY(-2px);
+}
+
+.paper-action-trash {
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #B31B1B;
+}
+
+.paper-action-trash:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .paper-demo-layout { flex-direction: column; }
+  .paper-demo-copy { flex: none; max-width: 100%; }
+}
+
+@media (max-width: 720px) {
+  .paper-demo { padding: 0 1rem; }
+  .paper-action { padding: 0.6rem 1rem; font-size: 0.8rem; }
+  .paper-action-dislike { left: 0.25rem; }
+  .paper-action-like { right: 0.25rem; }
+  .paper-card-body { grid-template-columns: 1fr; }
+}
+
+/* AGENT SKILLS & TOOLS */
+.agent-skills-block {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--section-divider);
   text-align: center;
 }
 
-.how-it-works-card h4 {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 0.75rem;
+.agent-skills-eyebrow {
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  letter-spacing: -0.01em;
 }
 
-.how-it-works-card p {
-  color: var(--muted);
+.skills-list {
+  margin: 3rem auto 0;
+  max-width: 900px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
   font-size: 1.4rem;
-  line-height: 1.6;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
 /* FOOTER */
@@ -770,8 +1398,8 @@ h1, h2, h3, h4, p { margin: 0; }
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .feature-grid { grid-template-columns: 1fr; }
-  .how-it-works-grid { grid-template-columns: 1fr; }
-  .models-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-list { grid-template-columns: repeat(2, 1fr); }
+  .savings-section { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -796,7 +1424,7 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 
 @media (max-width: 560px) {
-  .models-grid { grid-template-columns: 1fr; }
+  .skills-list { grid-template-columns: 1fr; }
 }
 
 /* SCROLL REVEAL — same easing/duration/distance as the hero's fade-in below,
@@ -819,7 +1447,3 @@ h1, h2, h3, h4, p { margin: 0; }
 
 [data-reveal-group="how"][data-reveal-index="1"] { transition-delay: 0.12s; }
 [data-reveal-group="how"][data-reveal-index="2"] { transition-delay: 0.24s; }
-
-[data-reveal-group="models"][data-reveal-index="1"] { transition-delay: 0.1s; }
-[data-reveal-group="models"][data-reveal-index="2"] { transition-delay: 0.2s; }
-[data-reveal-group="models"][data-reveal-index="3"] { transition-delay: 0.3s; }
