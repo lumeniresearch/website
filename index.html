@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumeni: Your Research Assistant AGI Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=42">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#home">
+      <img class="logo-mark" src="assets/logo.png" alt="Lumeni logo">
+      <span class="logo-word">Lumeni</span>
+    </a>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#product">Product</a>
+      <a href="#skills">Skills</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="mailto:demo@lumeni.ai?subject=Lumeni%20Demo%20Request" class="btn btn-ghost">Book a Demo</a>
+      <a href="#demo" class="btn btn-primary">Get Started</a>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME / HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <h1 class="hero-title">
+          <span class="hero-line hero-line-main" id="typed-line" data-typed-text="Hi, Lumeni" data-typed-accent="Lumeni">Hi, <span class="name-accent">Lumeni</span></span>
+          <span class="hero-line hero-line-sub">Your personalized research <span class="name-accent">AGI</span> <span class="name-accent">agent</span> exploring ideas <em>with</em> <span class="name-accent">you</span>.</span>
+        </h1>
+        <p class="hero-sub">
+          Lumeni connects the papers you browse, the notes you keep, and the conversations you've
+          already had into one research partner that remembers. It gives every researcher a
+          self-learning agent that acts just like a reliable partner.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <a href="mailto:demo@lumeni.ai?subject=Lumeni%20Demo%20Request" class="btn btn-primary btn-lg">Book a Demo <span class="arrow">&rarr;</span></a>
+        <a href="#product" class="btn btn-ghost btn-lg">Explore Lumeni</a>
+        <p class="hero-email-fallback">Button not opening your email app? Write to us directly at <a href="mailto:demo@lumeni.ai?subject=Lumeni%20Demo%20Request">demo@lumeni.ai</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT / MIDDLE SECTION -->
+  <section id="product" class="product-section">
+
+    <div class="problem-block">
+      <h2 class="section-title" data-reveal>Currently, researchers lose most of their time and tokens <em>just</em> reading papers.</h2>
+    </div>
+
+    <div class="explainer-block">
+      <p class="explainer-lead" data-reveal>
+        Lumeni has <span class="highlight">memory</span> it can filter through and be more efficient
+        when it comes to discussing ideas. The agent is <span class="highlight">self-learning</span>
+        and acts like another researcher you can discuss ideas with.
+      </p>
+
+      <h3 class="savings-title" data-reveal>With Lumeni:</h3>
+
+      <div class="savings-section">
+        <div class="savings-col">
+          <div class="savings-card-label">Hours saved every week</div>
+          <div class="hours-bar-wrap">
+            <div class="hours-bar-value"><span class="hours-number" data-count-to="20">0</span><span class="hours-unit">hours</span></div>
+          </div>
+          <div class="savings-card savings-card-hours" data-reveal>
+
+            <div class="card-compare-vertical">
+              <div class="card-compare-col">
+                <span class="card-compare-value-v">20 hrs</span>
+                <div class="card-compare-track-v"><div class="card-compare-fill-v before" style="--fill: 100%"></div></div>
+                <span class="card-compare-name-v">Without Lumeni</span>
+              </div>
+              <div class="card-compare-col">
+                <span class="card-compare-value-v">0 hrs</span>
+                <div class="card-compare-track-v"><div class="card-compare-fill-v after" style="--fill: 0%"></div></div>
+                <span class="card-compare-name-v">With Lumeni</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="savings-col">
+          <div class="savings-card-label">Tokens saved per paper</div>
+          <div class="tokens-count-wrap">
+            <div class="tokens-count" data-count-to="95000">0</div><span class="hours-unit tokens-unit">tokens</span>
+          </div>
+          <div class="savings-card savings-card-tokens" data-reveal>
+
+            <div class="card-compare-vertical">
+              <div class="card-compare-col">
+                <span class="card-compare-value-v">100,000</span>
+                <div class="card-compare-track-v"><div class="card-compare-fill-v before" style="--fill: 100%"></div></div>
+                <span class="card-compare-name-v">Without Lumeni</span>
+              </div>
+              <div class="card-compare-col">
+                <span class="card-compare-value-v">5,000</span>
+                <div class="card-compare-track-v"><div class="card-compare-fill-v after" style="--fill: 5%"></div></div>
+                <span class="card-compare-name-v">With Lumeni</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="savings-col">
+          <div class="savings-card-label">Money saved per idea</div>
+          <div class="money-bar-wrap">
+            <div class="money-bar-value">$<span class="money-number" data-count-to="95">0</span></div>
+          </div>
+          <div class="savings-card savings-card-money" data-reveal>
+
+            <div class="card-compare-vertical">
+              <div class="card-compare-col">
+                <span class="card-compare-value-v">$100</span>
+                <div class="card-compare-track-v"><div class="card-compare-fill-v before" style="--fill: 100%"></div></div>
+                <span class="card-compare-name-v">Without Lumeni</span>
+              </div>
+              <div class="card-compare-col">
+                <span class="card-compare-value-v">$5</span>
+                <div class="card-compare-track-v"><div class="card-compare-fill-v after" style="--fill: 5%"></div></div>
+                <span class="card-compare-name-v">With Lumeni</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-it-works-block">
+      <p class="eyebrow how-it-works-eyebrow" data-reveal>HOW LUMENI WORKS</p>
+      <h3 class="section-title-sm" data-reveal>From first glance to deep discussion.</h3>
+
+      <div class="paper-demo-block">
+        <div class="paper-demo-layout">
+          <div class="paper-demo-copy">
+            <p class="eyebrow eyebrow-md">SMART DISCOVERY</p>
+            <h3 class="section-title-sm paper-demo-title">Automatically discover the most relevant papers.</h3>
+            <p class="eyebrow-md paper-demo-tryit">Try it out!</p>
+          </div>
+
+        <div class="paper-demo" data-reveal>
+          <button type="button" class="paper-action paper-action-maybe" data-action="maybe"><span class="paper-action-arrow">&uarr;</span>Maybe</button>
+          <button type="button" class="paper-action paper-action-dislike" data-action="dislike"><span class="paper-action-arrow">&larr;</span>Dislike</button>
+          <button type="button" class="paper-action paper-action-like" data-action="like">Like<span class="paper-action-arrow">&rarr;</span></button>
+          <button type="button" class="paper-action paper-action-trash" data-action="trash"><span class="paper-action-arrow">&darr;</span>Trash</button>
+
+          <div class="paper-card" id="paper-card">
+            <div class="paper-card-topbar">
+              <span class="paper-card-page" id="paper-page">1 / 3</span>
+              <span class="paper-card-title" id="paper-title">GRAFT: Grafted Reference Audio for Fine-Tuned TTS</span>
+              <div class="paper-card-topbar-actions">
+                <div class="paper-actions-menu">
+                  <button type="button" class="paper-actions-toggle" id="paper-actions-toggle">Paper actions</button>
+                  <div class="paper-actions-dropdown" id="paper-actions-dropdown">
+                    <button type="button">Add to notes</button>
+                    <button type="button">Export citation</button>
+                    <button type="button">Ask Lumeni about this</button>
+                  </div>
+                </div>
+                <a href="https://arxiv.org" target="_blank" rel="noopener" class="paper-read-link">Read on arXiv &#8599;</a>
+              </div>
+            </div>
+
+            <div class="paper-card-body">
+              <div class="paper-card-col">
+                <span class="fake-line w-95"></span>
+                <span class="fake-line w-100"></span>
+                <span class="fake-line w-88"></span>
+                <span class="fake-line w-92"></span>
+                <span class="fake-line w-70"></span>
+                <span class="fake-line-gap"></span>
+                <span class="fake-line w-98"></span>
+                <span class="fake-line w-90"></span>
+                <span class="fake-line w-95"></span>
+                <span class="fake-line w-80"></span>
+              </div>
+              <div class="paper-card-col">
+                <span class="fake-line w-90"></span>
+                <span class="fake-line w-96"></span>
+                <span class="fake-line w-100"></span>
+                <span class="fake-line w-85"></span>
+                <span class="fake-line-gap"></span>
+                <span class="fake-line w-92"></span>
+                <span class="fake-line w-98"></span>
+                <span class="fake-line w-80"></span>
+                <span class="fake-line w-90"></span>
+              </div>
+            </div>
+
+            <div class="paper-card-overlay" id="paper-overlay">
+              <p class="paper-overlay-title">How would you like to handle this paper?</p>
+              <p class="paper-overlay-sub">Click or swipe in a labeled direction. To continue reading, click here.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="ai-assistant-block">
+        <div class="ai-chat-mock" data-reveal>
+          <div class="ai-chat-header">
+            <span class="ai-chat-avatar">L</span>
+            <div class="ai-chat-header-text">
+              <span class="ai-chat-name">Lumeni</span>
+              <span class="ai-chat-model">Claude Sonnet 5.0</span>
+            </div>
+          </div>
+          <div class="ai-chat-divider"></div>
+          <div class="ai-chat-body">
+            <div class="ai-chat-bubble ai-chat-bubble-user">
+              What are the advantages of the sparse attention in this paper compared to standard attention?
+            </div>
+            <div class="ai-chat-bubble ai-chat-bubble-ai">
+              <p><strong>Based on the paper and related works in your knowledge base:</strong></p>
+              <ol>
+                <li>Reduces computational complexity from O(n&sup2;) to O(n log n), enabling much longer context windows.</li>
+                <li>Structured sparsity patterns are tuned for scientific documents, preserving accuracy on long-range citations and equations.</li>
+              </ol>
+              <span class="ai-chat-tag">RAG &middot; Cited 3 papers from your library</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-assistant-copy" data-reveal>
+          <p class="eyebrow eyebrow-md">AI ASSISTANT</p>
+          <h3 class="section-title-sm">Lumeni &mdash; Your AI Research Companion</h3>
+          <p class="ai-assistant-desc">
+            Built-in support for Claude, OpenAI, Gemini, and DeepSeek &mdash; switch between
+            models with one click. Paper explanations, concept breakdowns, research suggestions:
+            Lumeni has you covered.
+          </p>
+          <div class="ai-model-pills">
+            <span class="ai-model-pill">Claude</span>
+            <span class="ai-model-pill">OpenAI</span>
+            <span class="ai-model-pill">Gemini</span>
+            <span class="ai-model-pill">DeepSeek</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="connectors-strip" data-reveal>
+        <p class="connectors-caption">Lumeni uses tools you already know.</p>
+        <div class="connectors-row">
+          <a class="connector-item" href="https://arxiv.org" target="_blank" rel="noopener">
+            <img class="connector-logo-img" src="assets/logos/arxiv.png" alt="arXiv logo">
+            <span>arXiv</span>
+          </a>
+          <a class="connector-item" href="https://scholar.google.com" target="_blank" rel="noopener">
+            <img class="connector-logo-img" src="assets/logos/google-scholar.png" alt="Google Scholar logo">
+            <span>Google Scholar</span>
+          </a>
+        </div>
+
+        <div class="conferences-marquee" aria-label="Peer-reviewed conferences covered by Lumeni">
+          <div class="conferences-track">
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-cvpr.png" alt="CVPR logo"><span>CVPR</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-neurips.png" alt="NeurIPS logo"><span>NeurIPS</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-iclr.png" alt="ICLR logo"><span>ICLR</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-icml.png" alt="ICML logo"><span>ICML</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-acl.png" alt="ACL logo"><span>ACL</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-emnlp.png" alt="EMNLP logo"><span>EMNLP</span></div>
+            <div class="connector-item conference-item"><span class="aaai-mark" aria-hidden="true">AAAI</span><span>AAAI</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-siggraph.png" alt="SIGGRAPH logo"><span>SIGGRAPH</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-kdd.png" alt="KDD logo"><span>KDD</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-iccv.png" alt="ICCV logo"><span>ICCV</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-cvpr.png" alt="CVPR logo"><span>CVPR</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-neurips.png" alt="NeurIPS logo"><span>NeurIPS</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-iclr.png" alt="ICLR logo"><span>ICLR</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-icml.png" alt="ICML logo"><span>ICML</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-acl.png" alt="ACL logo"><span>ACL</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-emnlp.png" alt="EMNLP logo"><span>EMNLP</span></div>
+            <div class="connector-item conference-item"><span class="aaai-mark" aria-hidden="true">AAAI</span><span>AAAI</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-siggraph.png" alt="SIGGRAPH logo"><span>SIGGRAPH</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-kdd.png" alt="KDD logo"><span>KDD</span></div>
+            <div class="connector-item conference-item"><img class="connector-logo-img" src="assets/logos/conf-iccv.png" alt="ICCV logo"><span>ICCV</span></div>
+          </div>
+        </div>
+
+        <div class="coming-soon-block">
+          <span class="coming-soon-label">Coming Soon</span>
+          <div class="connectors-row connectors-row-soon">
+            <div class="connector-item connector-item-soon">
+              <img class="connector-logo-img" src="assets/logos/pubmed.png" alt="PubMed logo">
+              <span>PubMed</span>
+              <span class="soon-badge">Soon</span>
+            </div>
+            <div class="connector-item connector-item-soon">
+              <img class="connector-logo-img" src="assets/logos/jstor.png" alt="JSTOR logo">
+              <span>JSTOR</span>
+              <span class="soon-badge">Soon</span>
+            </div>
+            <div class="connector-item connector-item-soon">
+              <img class="connector-logo-img" src="assets/logos/sciencedirect.png" alt="ScienceDirect logo">
+              <span>ScienceDirect</span>
+              <span class="soon-badge">Soon</span>
+            </div>
+            <div class="connector-item connector-item-soon">
+              <img class="connector-logo-img" src="assets/logos/overleaf.png" alt="Overleaf logo">
+              <span>Overleaf</span>
+              <span class="soon-badge">Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agent-skills-block" id="skills">
+      <p class="eyebrow agent-skills-eyebrow" data-reveal>AGENT SKILLS &amp; TOOLS</p>
+      <h3 class="section-title-sm" data-reveal>Everything Lumeni can reach for.</h3>
+
+      <ul class="skills-list" data-reveal>
+        <li>Fetch</li>
+        <li>Search</li>
+        <li>Chat</li>
+        <li>Summarize</li>
+        <li>Cite sources</li>
+        <li>Compare papers</li>
+        <li>Extract tables &amp; figures</li>
+        <li>Translate</li>
+        <li>Organize notes</li>
+      </ul>
+    </div>
+
+    <div class="harness-block">
+      <p class="eyebrow harness-eyebrow" data-reveal>LUMEHARNESS</p>
+      <h3 class="section-title-sm" data-reveal>The engine behind Lumeni</h3>
+
+      <div class="harness-sources" data-reveal>
+        <span class="harness-source-chip">Markdown notes</span>
+        <span class="harness-source-chip">Chat history</span>
+        <span class="harness-source-chip">Paper actions</span>
+      </div>
+
+      <div class="harness-card" data-reveal>
+        <p class="harness-description">
+          <span class="highlight">LumeHarness</span> is the infrastructure that filters through everything Lumeni remembers about
+          you as a researcher &mdash; your markdown notes, your full chat history, and the papers
+          you've liked or passed on &mdash; and decides what's actually worth pulling into <span class="highlight">context</span>.
+          Instead of re-feeding Lumeni everything you've ever discussed, <span class="highlight">LumeHarness</span> surfaces only
+          what's <span class="highlight">relevant</span> to the idea in front of you right now.
+        </p>
+        <p class="harness-punchline">That's how it can save so many tokens.</p>
+      </div>
+    </div>
+
+    <div class="features-block">
+      <p class="eyebrow why-lumeni-eyebrow" data-reveal>WHY LUMENI</p>
+      <h3 class="section-title-sm" data-reveal>Keep your research sharp, current, and grounded.</h3>
+      <p class="features-sub" data-reveal>
+        Avoid re-reading what you've already read, surface the paper you didn't know existed,
+        and pick up exactly where your last session left off.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card" data-reveal data-reveal-group="features" data-reveal-index="0">
+          <p class="eyebrow">MEMORY BY DESIGN</p>
+          <h4>Lumeni remembers the shape of your research.</h4>
+          <p>Every conversation, source, and idea you've explored stays filterable and searchable,
+             so Lumeni never makes you repeat context you've already given it.</p>
+        </div>
+        <div class="feature-card" data-reveal data-reveal-group="features" data-reveal-index="1">
+          <p class="eyebrow">SELF-LEARNING</p>
+          <h4>Lumeni gets sharper the more you use it.</h4>
+          <p>It learns how you think, which sources you trust, and where your research is heading &mdash;
+             refining its own reasoning as your project evolves.</p>
+        </div>
+        <div class="feature-card" data-reveal data-reveal-group="features" data-reveal-index="2">
+          <p class="eyebrow">ASK ONCE, NOT SIX TABS</p>
+          <h4>Enterprise search that understands research.</h4>
+          <p>Ask across papers, notes, and prior conversations at once. One cited answer,
+             instead of a dozen searches across a dozen tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELS / BOTTOM SECTION -->
+  <section id="models" class="models-section">
+    <div class="cta-block" id="demo" data-reveal>
+      <h3>Curious what Lumeni could do for your research?</h3>
+      <p>A short conversation about how a connected research memory could accelerate your work.</p>
+      <a href="mailto:demo@lumeni.ai?subject=Lumeni%20Demo%20Request" class="btn btn-primary btn-lg">Book a Demo <span class="arrow">&rarr;</span></a>
+      <p class="cta-email">Button not working? Email <a href="mailto:demo@lumeni.ai?subject=Lumeni%20Demo%20Request">demo@lumeni.ai</a> to book, or <a href="mailto:questions@lumeni.ai">questions@lumeni.ai</a> for anything else.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 Lumeni. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#product">Product</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js?v=25"></script>
+</body>
+</html>
