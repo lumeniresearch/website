@@ -1323,6 +1323,11 @@ a.connector-item:hover {
 @media (max-width: 900px) {
   .paper-demo-layout { flex-direction: column; }
   .paper-demo-copy { flex: none; max-width: 100%; }
+  /* Without this, .paper-demo keeps its desktop 620px flex-basis, and a
+     stacked flex column with align-items:center shrink-wraps to that
+     content width instead of the viewport — the card (and its long
+     topbar of title + buttons) then overflows the screen horizontally. */
+  .paper-demo { flex: none; width: 100%; max-width: 100%; }
 }
 
 @media (max-width: 720px) {
@@ -1331,6 +1336,8 @@ a.connector-item:hover {
   .paper-action-dislike { left: 0.25rem; }
   .paper-action-like { right: 0.25rem; }
   .paper-card-body { grid-template-columns: 1fr; }
+  .paper-card-topbar { flex-wrap: wrap; row-gap: 0.5rem; }
+  .paper-card-title { flex-basis: 100%; order: 3; white-space: normal; }
 }
 
 /* AGENT SKILLS & TOOLS */
@@ -1417,10 +1424,46 @@ a.connector-item:hover {
   }
   .nav-links.open { display: flex; }
   .nav-toggle { display: flex; }
-  .nav-actions { display: none; }
-  .nav-actions.open { display: flex; flex-direction: column; width: 100%; }
+  /* nav-actions now lives inside #nav-links, so it shows/hides with the
+     dropdown automatically — it just needs to stack full-width instead
+     of staying a row of buttons. */
+  .nav-actions { flex-direction: column; width: 100%; gap: 0.75rem; margin-top: 0.25rem; }
   .savings-section { grid-template-columns: 1fr; gap: 1.5rem; }
   .savings-card { padding: 2.25rem 1.75rem; }
+
+  /* The 80% zoom is a desktop-only density preference — on an actual
+     phone screen it just makes an already-small viewport render smaller
+     still, so it's switched off below the tablet breakpoint. */
+  body { zoom: 100%; }
+
+  /* .hero's min-height exists to pre-compensate for that 80% zoom
+     (125vh / 0.8 ≈ 100vh of visible space) — with zoom off on mobile,
+     that math no longer applies, so let the hero size to its own content
+     instead of forcing a fixed viewport-height block. */
+  .hero {
+    min-height: auto;
+    padding: 2rem 1.25rem 2.5rem;
+  }
+
+  .hero-title { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+
+  .hero-line-sub {
+    margin-top: 1.5rem;
+    font-size: clamp(1.5rem, 6vw, 1.9rem);
+  }
+
+  .hero-sub {
+    margin-top: 1.75rem;
+    font-size: 1.05rem;
+  }
+
+  .hero-actions {
+    margin-top: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .card-compare-track-v { width: 44px; height: 150px; }
+  .card-compare-vertical { gap: 1.75rem; }
 }
 
 @media (max-width: 560px) {
