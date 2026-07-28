@@ -37,9 +37,9 @@ body {
     var(--primary) 96%,
     var(--ink) 100%);
   line-height: 1.5;
-  /* Bakes in the 80% scale you preferred (the "zoomed out" look),
+  /* Bakes in the 75% scale you preferred (the "zoomed out" look),
      so it's the site's real, default size instead of a per-browser zoom setting. */
-  zoom: 80%;
+  zoom: 75%;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -91,17 +91,22 @@ h1, h2, h3, h4, p { margin: 0; }
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 1.75rem;
 }
 
-.nav-links a {
+/* Direct-child selector only — .nav-actions now lives inside #nav-links
+   for the mobile dropdown, and its <a class="btn"> buttons must keep
+   their own btn-primary/btn-ghost colors, not inherit the plain nav-link
+   text color. */
+.nav-links > a {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--ink-soft);
   transition: color 0.15s ease;
 }
 
-.nav-links a:hover { color: var(--primary); }
+.nav-links > a:hover { color: var(--primary); }
 
 .nav-actions {
   display: flex;
@@ -169,12 +174,13 @@ h1, h2, h3, h4, p { margin: 0; }
 .btn:hover .arrow { transform: translateX(3px); }
 
 /* HERO — fills the full viewport below the sticky nav.
-   The 125vh (instead of 100vh) compensates for body's zoom: 80% — vh always
-   resolves against the true, unzoomed viewport, but this box then gets
-   visually shrunk by that same zoom, so the target has to be scaled up by
-   1/0.8 first so the on-screen result still ends up filling the screen. */
+   The 133.33vh (instead of 100vh) compensates for body's zoom: 75% — vh
+   always resolves against the true, unzoomed viewport, but this box then
+   gets visually shrunk by that same zoom, so the target has to be scaled
+   up by 1/0.75 first so the on-screen result still ends up filling the
+   screen. */
 .hero {
-  min-height: calc(125vh - 75px);
+  min-height: calc(133.33vh - 75px);
   display: flex;
   flex-direction: column;
   padding: 3rem 1.5rem 4.5rem;
@@ -1431,13 +1437,13 @@ a.connector-item:hover {
   .savings-section { grid-template-columns: 1fr; gap: 1.5rem; }
   .savings-card { padding: 2.25rem 1.75rem; }
 
-  /* The 80% zoom is a desktop-only density preference — on an actual
+  /* The 75% zoom is a desktop-only density preference — on an actual
      phone screen it just makes an already-small viewport render smaller
      still, so it's switched off below the tablet breakpoint. */
   body { zoom: 100%; }
 
-  /* .hero's min-height exists to pre-compensate for that 80% zoom
-     (125vh / 0.8 ≈ 100vh of visible space) — with zoom off on mobile,
+  /* .hero's min-height exists to pre-compensate for that 75% zoom
+     (133.33vh / 0.75 ≈ 100vh of visible space) — with zoom off on mobile,
      that math no longer applies, so let the hero size to its own content
      instead of forcing a fixed viewport-height block. */
   .hero {
